@@ -1,0 +1,150 @@
+//Justin Tamares
+//CPSC 121 Lab 3
+//2/5/18
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	int length, height;
+	char input, answer;
+	string s;
+	ofstream outputFile;
+	do
+	{
+		outputFile.open("shape.txt"); //Creates the file
+		cout << "Writing to shape.txt" << endl;
+		cout << "Enter a for rectangle" << endl;
+		cout << "Enter b for triangle" << endl;
+		cin >> input;	//The user chooses either rectangle or triangle.
+	
+		if (input == 'a')
+		{
+			cout << "Would you like to use a word for your rectangle?" << endl;
+			cout << "Enter a for word" << endl;
+			cout << "Enter b for default" << endl;
+			cin >> input;
+			if (input == 'a')
+			{
+				cout << "Please enter your word" << endl; //User chooses their word
+				cin >> s;
+				cout << endl;
+				for (int m = 0; m < s.size(); m++)
+				{
+
+					cout << s;
+
+					cout << endl;
+					outputFile << s << endl; //Saves to the .txt file
+				}
+			}
+			else if (input == 'b') //If not word, then the program asks for length and height
+			{
+				cout << "Please enter your desired length" << endl;
+				cin >> length;
+				cout << "Please enter your desired height" << endl;
+				cin >> height;
+				for (int i = 0; i < height; i++)
+				{
+					for (int n = 0; n < length; n++)
+					{
+						cout << "X";
+						outputFile << "X";
+					}
+					cout << endl;
+					outputFile << endl;
+				}
+
+			}
+		}
+		else if (input == 'b')
+		{
+			cout << "You have selected triangle." << endl;
+			cout << "Do you want your triangle to be made of words?" << endl; //Decides if triangle is made up of X or words
+			cout << "Please enter a for yes" << endl;
+			cout << "Please enter b for no" << endl;
+			cin >> input;
+			if (input == 'a')
+			{
+				cout << "Do you want your triangle pointing up or down?" << endl; //Decides if the triangle points down or up
+				cout << "Enter a for up" << endl;
+				cout << "Enter b for down" << endl;
+				cin >> input;
+				if (input == 'a')
+				{
+					cout << "Please enter your word" << endl;
+					cin >> s;
+					for (int m = (s.size() - 1); m >=0; m--) //s.size() - 1 for the last character in the string
+					{
+						for (int n = m; n <= (s.size()-1); n++)
+						{
+							cout << s[n];
+							outputFile << s[n];
+						}
+						cout << endl;
+						outputFile << endl;
+					}
+				}
+				else if (input == 'b')
+				{
+					cout << "Please enter your word" << endl;
+					cin >> s;
+					for (int i = s.size(); i > 0; i--)
+					{
+						for (int n = 0; n < i; n++)
+						{
+							cout << s[n];
+							outputFile << s[n];
+						}
+						cout << endl;
+						outputFile << endl;
+					}
+				}
+			}
+			else if (input == 'b')
+			{
+				cout << "Do you want your triangle pointing up or down?" << endl; //Like option a except the user decides the height and length
+				cout << "Enter a for up" << endl;
+				cout << "Enter b for down" << endl;
+				cin >> input;
+				if (input == 'a')
+				{
+					cout << "Enter your height" << endl;
+					cin >> height;
+					for (int i = 0; i < height; i++)
+					{
+						for (int n = 0; n < i; n++)
+						{
+							cout << "X";
+							outputFile << "X";
+						}
+						cout << endl;
+						outputFile << endl;
+					}
+				}
+				else if (input == 'b')
+					cout << "Enter your height" << endl;
+				cin >> height;
+				for (int i = height; i > 0; i--)
+				{
+					for (int n = 0; n < i; n++)
+					{
+						cout << "X";
+						outputFile << "X";
+					}
+					cout << endl;
+					outputFile << endl;
+				}
+			}
+		}
+		outputFile.close(); //The file saves and closes
+		cout << "Would you like to try again? y or n?" << endl;
+		cin >> answer;
+	}
+		
+	while (answer == 'y');//If y,it repeats
+	system("PAUSE");
+	return(0);
+}
