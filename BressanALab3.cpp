@@ -2,7 +2,7 @@
 
 //9/3/2017    
 
-//Lab 2    
+//Lab 3   
 
 #include <iostream>    
 
